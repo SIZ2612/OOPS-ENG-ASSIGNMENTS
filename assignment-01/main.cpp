@@ -1,28 +1,42 @@
 #include <iostream>
 using namespace std;
 
+int Binocoef(int n, int k)
+{
+int res = 1;
+
+if (k > n - k)
+k = n - k;
+
+for (int i = 0; i < k; i++)
+{
+res = res * (n - i);
+res = res / (i + 1);
+}
+
+return res;
+}
+
+void printPascal(int n)
+{
+
+for (int line = 0; line < n; line++)
+{
+for (int i = 0; i <= line; i++)
+{
+cout << Binocoef(line, i) << " ";
+}
+cout << endl;
+}
+}
+
 int main()
 {
-    int n, value;
+int n;
+cout << "Enter number of rows: ";
+cin >> n;
 
-    cout << "Enter number of rows: ";
-    cin >> n;
+printPascal(n);
 
-    for (int i = 0; i < n; i++)
-    {
-        value = 1;
-
-        for (int space = 0; space < n - i; space++)
-            cout << " ";
-
-        for (int j = 0; j <= i; j++)
-        {
-            cout << value << " ";
-            value = value * (i - j) / (j + 1);
-        }
-
-        cout << endl;
-    }
-
-    return 0;
+return 0;
 }
