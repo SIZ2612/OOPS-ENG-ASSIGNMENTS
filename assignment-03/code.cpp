@@ -1,47 +1,55 @@
 #include <iostream>
 using namespace std;
-void accept(int&,int[]);
-void bubblesort(int ,int[]);
-void display(int,int[]);
-void swap( int &, int &);
+
+void accept(int &a, int c[])
+{
+    cout << "Enter number of array elements: ";
+    cin >> a;
+
+    cout << "Enter array elements: ";
+    for(int i = 0; i < a; i++)
+        cin >> c[i];
+}
+
+void display(int m, int arr[])
+{
+    cout << "The array is: ";
+    for(int i = 0; i < m; i++)
+        cout << arr[i] << " ";
+}
+
+void swap(int &a, int &b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void sort(int m, int arr[])
+{
+    for(int i = 0; i < m - 1; i++)
+    {
+        for(int j = 0; j < m - i - 1; j++)
+        {
+            if(arr[j] > arr[j + 1])
+                swap(arr[j], arr[j + 1]);
+        }
+    }
+}
+
 int main()
 {
     int n, arr[10];
+
     accept(n, arr);
+
+    cout << "\nThe unsorted array is: ";
     display(n, arr);
-    bubblesort(n ,arr);
-    display(n ,arr);
-   
+
+    sort(n, arr);
+
+    cout << "\nThe sorted array is: ";
+    display(n, arr);
+
     return 0;
-}
-void swap(int & a, int & b)
-{ int temp=a;
- a=b;
- b=temp;
-}
-void bubblesort(int k, int ar1[])
-{
-    for(int i=0; i<k-1; i++)
-    {for(int j=0; j<k-i-1; j++)
-    if(ar1[j]>ar1[j+1])
-    swap(ar1[j],ar1[j+1]);
-   
-    }
-}
-void accept(int&a, int b[])
-{
-    cout<<" \n Enter no. of array elements:";
-    cin>>a;
-    cout<<" \n Enter array elements:\n";
-    for(int i=0;i<a;i++)
-    cin>>b[i];
-   
-}
-void display(int a,int b[])
-{
-    cout<<"Array elements are:\n";
-    for (int i =0;i<a;i++)
-    {
-    cout<<b[i]<<endl;
-    }
 }
