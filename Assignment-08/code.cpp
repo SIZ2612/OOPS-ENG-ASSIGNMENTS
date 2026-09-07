@@ -1,4 +1,7 @@
-:#include <iostream> using namespace std;
+//name:Shreya zaware
+//PRN:B25ET1060
+#include <iostream>
+using namespace std;
 
 int main()
 {
